@@ -20,5 +20,9 @@ def get_tasks():
 def create_task():
     data = request.get_json()
     task = data.get("task")
+
+    if not task:
+        return jsonify({"error": "Task is required"}), 400
+   
     tasks.append(task)
     return jsonify({"message": "Task added", "task": task})
