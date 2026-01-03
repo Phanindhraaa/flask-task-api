@@ -26,3 +26,11 @@ def create_task():
    
     tasks.append(task)
     return jsonify({"message": "Task added", "task": task})
+
+
+@app.route("/stress")
+def stress_cpu():
+    result = 0
+    for i in range(10000000): 
+        result += i * i
+    return jsonify({"result": result, "message": "CPU stressed!"})
